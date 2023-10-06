@@ -81,7 +81,7 @@
     }
 
     function create(num) {
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < num; i++) {
         let litag = document.createElement('li');
         playground.appendChild(litag)
 
@@ -99,14 +99,16 @@
     
     create(3);
 
-    let li = document.getElementsByTagName('li')
+    let li = document.getElementById('playground')
     console.log(li)
-    for(let i=0; i<li.length; i++) {
-      li[i].addEventListener('click', function(event) {
-        li[i].remove(event);
+
+      li.addEventListener('click', function() {
+        if()
+        event.target.remove(); 
+        create(1);
       }
       )
-    }
+    
     console.dir(time)
     // 반복문을 통하여 litag 생성함수 작성
 
