@@ -98,14 +98,11 @@
     }
     
     create(3);
-
-    let li = document.getElementById('playground')
-    console.log(li)
-
-      li.addEventListener('click', function() {
-        if()
+      playground.addEventListener('click', function() {
+        if(event.target !== playground) {
         event.target.remove(); 
         create(1);
+        }
       }
       )
     
