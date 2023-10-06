@@ -67,12 +67,21 @@
   <script>
     let time = document.getElementById('time')
     console.dir(time)
+    // 반복문을 통하여 litag 생성함수 작성
     for(let i=0; i<3; i++) {
       let litag = document.createElement('li');
       time.children[1].appendChild(litag)
       litag.style.backgroundColor ="black";
       litag.style.width = "30px";
       litag.style.height = "30px";
+
+      let random = Math.floor(Math.random() * 800-1)+1
+// position설정
+      litag[i].style.position  = 'absolute'
+      litag[i].style.top = parseint(random) +'px'
+      litag[i].style.left = parseint(random) + 'px'
+
+
     }
   </script>
 </body>
