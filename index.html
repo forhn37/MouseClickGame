@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #root {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: aliceblue;
+    }
+    #playground {
+      width: 800px;
+      height: 800px;
+      background-color: gray;
+      position: relative;
+    }
+    #consolebox {
+      width: 300px;
+      height: 800px;
+      background-color: gray;
+      margin-left: 30px;
+      display: flex;
+      flex-direction: column;
+    }
+    #time {
+      margin-top: 320px;
+      width: 300px;
+      height: 70px;
+    }
+    #score {
+      width: 300px;
+      height: 70px;
+    }
+    #playbutton {
+      width: 300px;
+      height: 300px;
+    }
+    /* 기초 css 작성 */
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div id ="playground"></div>
+    <div id ="consolebox">
+      <!-- 두번째 ul태그에 감소하는 타이머 작성 -->
+      <div id = "time">
+        <ul>제한시간</ul>
+        <ul></ul>
+      </div>
+      <!-- 두번째 ul태그에 score라는 곳에 넣은 점수 작성 -->
+      <div id = "score">
+        <ul>점수</ul>
+        <ul></ul>
+      </div>
+      <!-- addeventListner를 통하여 클릭시 3개의 li태그 생성 -->
+      <button type ="button" value ='Play!' id ='playbutton'>
+    </div>
+  </div>
+  <script>
+    let time = document.getElementById('time')
+    console.dir(time)
+    for(let i=0; i<3; i++) {
+      let litag = document.createElement('li');
+      time.children[1].appendChild(litag)
+      console.log(litag)
+    }
+  </script>
+</body>
+</html>
