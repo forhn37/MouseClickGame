@@ -102,8 +102,8 @@
     let li = document.getElementsByTagName('li')
     console.log(li)
     for(let i=0; i<li.length; i++) {
-      li[i].addEventListener('click', function() {
-        playground.removeChild(playground.li[i]);
+      li[i].addEventListener('click', function(event) {
+        li[i].remove(event);
       }
       )
     }
