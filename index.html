@@ -99,11 +99,14 @@
     
     create(3);
 
-    
-      playground.addEventListener('click', function() {
-        li[i].remove();
+    let li = document.getElementsByTagName('li')
+    console.log(li)
+    for(let i=0; i<li.length; i++) {
+      li[i].addEventListener('click', function() {
+        playground.removeChild(playground.li[i]);
       }
       )
+    }
     console.dir(time)
     // 반복문을 통하여 litag 생성함수 작성
 
