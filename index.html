@@ -73,28 +73,34 @@
     </div>
   </div>
   <script>
-    function random() {
-      Math.floor(Math.random() * (770 - 30 + 1)) + 30;
-    }
     let time = document.getElementById('time')
     let playground = document.getElementById('playground')
+
+    function random() {
+      return Math.floor(Math.random() * (770 - 30 + 1)) + 30;
+    }
+
+    function create(num) {
+      for (let i = 0; i < 3; i++) {
+        let litag = document.createElement('li');
+        playground.appendChild(litag)
+
+        litag.style.backgroundColor = "black";
+        litag.style.width = "30px";
+        litag.style.height = "30px";
+        // console.dir(playground)
+
+        // // position설정
+        litag.style.position = "absolute"
+        litag.style.top = `${random()}px`
+        litag.style.left = `${random()}px`
+      }
+    }
+    create(3);
     console.dir(time)
     // 반복문을 통하여 litag 생성함수 작성
 
-    for (let i = 0; i < 3; i++) {
-      let litag = document.createElement('li');
-      playground.appendChild(litag)
 
-      litag.style.backgroundColor = "black";
-      litag.style.width = "30px";
-      litag.style.height = "30px";
-      // console.dir(playground)
-
-      // // position설정
-      litag.style.position = "absolute"
-      litag.style.top = `${random()}px`
-      litag.style.left = `${random()}px`
-    }
   </script>
 </body>
 
