@@ -48,7 +48,11 @@
       justify-content: center;
       align-items: center;
     }
-
+    
+    #time > ul {
+      color: black;
+      font-size: 20px;
+    }
     #score {
       width: 300px;
       height: 70px;
@@ -130,12 +134,14 @@
       
       
 // 1초마다 timehow의 innerHTML에 '초'를 붙인 값을 입력하는 함수 작성 - 미해결
-      let limittime = setInterval(function() {
-        let time = 120000;
-        let sec = '';
-        time--;
-        sec = time%60
-        document.getElementById('timehow').innerHTML= sec+'초'
+let ti = 1000;
+let sec = '';
+let limittime = setInterval(function() {
+  ti--;
+  sec = ti%1000
+
+  document.getElementById('timehow').textContent = sec+'초'
+  console.log(sec)
       }, 1000);
     // 반복문을 통하여 litag 생성함수 작성
   </script>
