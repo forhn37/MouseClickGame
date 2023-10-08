@@ -98,7 +98,7 @@
       <!-- 두번째 ul태그에 score라는 곳에 넣은 점수 작성 -->
       <div id="score">
         <ul>점수</ul>
-        <ul id ='scorehow'>0</ul>
+        <ul id ='scorehow'></ul>
       </div>
       <!-- addeventListner를 통하여 클릭시 3개의 li태그 생성 -->
       <input type="button" value='Play!' id='playbutton'>
@@ -135,52 +135,39 @@
     }
 // 3개의 dot를 호출
 create(3);
-    // click이벤트 발생시 event.target을 제거하나 playground 이하 모든 태그가 삭제됨으로 if문으로 playground를 삭제되지 않도록 조건을 설정함
-    
-    
-    // 1초마다 timehow의 innerHTML에 '초'를 붙인 값을 입력하는 함수 작성 - 미해결
-    
+
+// 함수 클릭시 score++(1씩증가)하고 score가 scorehow.textcontent에 들어감
+let score = 0;
+let timehow = document.getElementById('timehow').textContent;
+let scorehow = document.getElementById('scorehow').textContent;
+playground.addEventListener('click', function() {
+  if(event.target !== playground) {
+    if(timehow !== '종료!') {
+      event.target.remove(); 
+      create(1);
+      scorehow = score++;
+    // 삭제가 되지 않는 조건
+    } else {
+    }
+    }
+  })
+  // click이벤트 발생시 event.target을 제거하나 playground 이하 모든 태그가 삭제됨으로 if문으로 playground를 삭제되지 않도록 조건을 설정함
+  
+  
+  // 1초마다 timehow의 innerHTML에 '초'를 붙인 값을 입력하는 함수 작성 
     function limittime(num) { setInterval(function() {
       num--;
       document.getElementById('timehow').textContent = num+'초'
       if( num < 0 ) {
-        clearInterval(limittime);
         document.getElementById('timehow').textContent = '종료!';
-        
+        clearInterval(limittime);
       };
     }, 1000);
     }
-//제한시간 20초로 호출 
-
-// 함수 클릭시 score++(1씩증가)하고 score가 scorehow.textcontent에 들어감
-  let score = 0;
-  let gamestart = playground.addEventListener('click', function() {
-    if(event.target !== playground) {
-      if(document.getElementById('timehow').textContent !== '종료!') {
-      event.target.remove(); 
-      create(1);
-      score++;
-      document.getElementById('scorehow').textContent = score;
-      // 삭제가 되지 않는 조건
-      } else {
-      }
-      let temp = [];
-      temp[temp.length] = score;
-      console.log(temp);
-        // console.log(score)
-      // } else {
-
-      // }
-    }
-  })
-
 let playbutton = document.getElementById('playbutton');
 playbutton.addEventListener('click', function() {
-  score = 0;
-  limittime(5);
+  limittime(10);
 });
-// let playbutton = location.reload();
   </script>
 </body>
-
 </html>
