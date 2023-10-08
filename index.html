@@ -134,15 +134,17 @@
       
       
 // 1초마다 timehow의 innerHTML에 '초'를 붙인 값을 입력하는 함수 작성 - 미해결
-let ti = 1000;
-let sec = '';
+let ti = 5;
+let sec = 0;
 let limittime = setInterval(function() {
   ti--;
-  sec = ti%1000
+  sec = ti%10;
 
   document.getElementById('timehow').textContent = sec+'초'
   console.log(sec)
-      }, 1000);
+      }, 1000
+      );
+  
     // 반복문을 통하여 litag 생성함수 작성
   </script>
 </body>
