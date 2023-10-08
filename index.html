@@ -24,8 +24,9 @@
     #playground {
       width: 800px;
       height: 800px;
-      background-color: gray;
+      background-color: aliceblue;
       position: relative;
+      border-style:solid;
     }
 /* flex-direction : column 적용시 주축이 바뀌므로 위아래 정렬은 justify-content로 바뀜 */
     #consolebox {
@@ -42,14 +43,14 @@
       width: 300px;
       height: 70px;
       margin-top: 10px;
-      background-color: gray;
+      background-color: palevioletred;
       display: flex;
       justify-content: center;
       align-items: center;
     }
     
     #time > ul {
-      color: black;
+      color: whitesmoke;
       font-size: 20px;
       width: 150px;
       text-align: center;
@@ -58,13 +59,13 @@
       width: 300px;
       height: 70px;
       margin-top: 10px;
-      background-color: gray;
+      background-color: palevioletred;
       display: flex;
       justify-content: space-around;
       align-items: center;
     }
     #score > ul {
-      color: black;
+      color: whitesmoke;
       font-size: 20px;
     }
 
@@ -72,11 +73,13 @@
       width: 300px;
       height: 300px;
       margin-top: 10px;
-      background-color: gray;
+      background-color: #f66;
+      border-radius: 50px;
+      border-style: hidden;
     }
     #playbutton {
-      color: black;
-      font-size: 20px;
+      color: whitesmoke;
+      font-size: 50px;
     }
 
     /* 기초 css 작성 */
@@ -90,7 +93,7 @@
       <!-- 두번째 ul태그에 감소하는 타이머 작성 -->
       <div id="time">
         <ul>제한시간</ul>
-        <ul id ='timehow'>10초</ul>
+        <ul id ='timehow'>20초</ul>
       </div>
       <!-- 두번째 ul태그에 score라는 곳에 넣은 점수 작성 -->
       <div id="score">
@@ -158,9 +161,12 @@ limittime(20);
       create(1);
       score++;
       document.getElementById('scorehow').textContent = score;
+      // 삭제가 되지 않는 조건
       } else {
-        
       }
+      let temp = [];
+      temp[temp.length] = score;
+      console.log(temp);
         // console.log(score)
       // } else {
 
