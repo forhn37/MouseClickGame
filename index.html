@@ -93,7 +93,7 @@
       <!-- 두번째 ul태그에 감소하는 타이머 작성 -->
       <div id="time">
         <ul>제한시간</ul>
-        <ul id ='timehow'>20초</ul>
+        <ul id ='timehow'></ul>
       </div>
       <!-- 두번째 ul태그에 score라는 곳에 넣은 점수 작성 -->
       <div id="score">
@@ -151,7 +151,7 @@ create(3);
     }, 1000);
     }
 //제한시간 20초로 호출 
-limittime(20);
+
 // 함수 클릭시 score++(1씩증가)하고 score가 scorehow.textcontent에 들어감
   let score = 0;
   let gamestart = playground.addEventListener('click', function() {
@@ -176,7 +176,8 @@ limittime(20);
 
 let playbutton = document.getElementById('playbutton');
 playbutton.addEventListener('click', function() {
-  location.reload();
+  score = 0;
+  limittime(5);
 });
 // let playbutton = location.reload();
   </script>
