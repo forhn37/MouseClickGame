@@ -25,29 +25,37 @@
       background-color: gray;
       position: relative;
     }
-
+/* flex-direction : column 적용시 주축이 바뀌므로 위아래 정렬은 justify-content로 바뀜 */
     #consolebox {
       width: 300px;
       height: 800px;
-      background-color: gray;
+      background-color: aliceblue;
       display: flex;
       flex-direction: column;
+      margin-left: 40px;
+      justify-content: end;
     }
 
     #time {
       margin-top: 320px;
       width: 300px;
       height: 70px;
+      margin-top: 10px;
+      background-color: gray;
     }
 
     #score {
       width: 300px;
       height: 70px;
+      margin-top: 10px;
+      background-color: gray;
     }
 
     #playbutton {
       width: 300px;
       height: 300px;
+      margin-top: 10px;
+      background-color: gray;
     }
 
     /* 기초 css 작성 */
@@ -111,11 +119,9 @@
         }
       }
       )
-    
+  
     console.dir(time)
     // 반복문을 통하여 litag 생성함수 작성
-
-
   </script>
 </body>
 
