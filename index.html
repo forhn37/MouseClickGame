@@ -39,7 +39,6 @@
     }
 
     #time {
-      margin-top: 320px;
       width: 300px;
       height: 70px;
       margin-top: 10px;
@@ -52,6 +51,8 @@
     #time > ul {
       color: black;
       font-size: 20px;
+      width: 150px;
+      text-align: center;
     }
     #score {
       width: 300px;
@@ -59,8 +60,12 @@
       margin-top: 10px;
       background-color: gray;
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
       align-items: center;
+    }
+    #score > ul {
+      color: black;
+      font-size: 20px;
     }
 
     #playbutton {
@@ -68,6 +73,10 @@
       height: 300px;
       margin-top: 10px;
       background-color: gray;
+    }
+    #playbutton {
+      color: black;
+      font-size: 20px;
     }
 
     /* 기초 css 작성 */
@@ -81,15 +90,15 @@
       <!-- 두번째 ul태그에 감소하는 타이머 작성 -->
       <div id="time">
         <ul>제한시간</ul>
-        <ul id ='timehow'></ul>
+        <ul id ='timehow'>5초</ul>
       </div>
       <!-- 두번째 ul태그에 score라는 곳에 넣은 점수 작성 -->
       <div id="score">
         <ul>점수</ul>
-        <ul id ='scorehow'></ul>
+        <ul id ='scorehow'>0</ul>
       </div>
       <!-- addeventListner를 통하여 클릭시 3개의 li태그 생성 -->
-      <button type="button" value='Play!' id='playbutton'>
+      <input type="button" value='Play!' id='playbutton'>
     </div>
   </div>
   <script>
@@ -124,26 +133,33 @@
     // 3개의 dot를 호출
     create(3);
     // click이벤트 발생시 event.target을 제거하나 playground 이하 모든 태그가 삭제됨으로 if문으로 playground를 삭제되지 않도록 조건을 설정함
-      playground.addEventListener('click', function() {
-        if(event.target !== playground) {
+    let score = 0;
+    
+    
+
+    playground.addEventListener('click', function() {
+      if(event.target !== playground) {
         event.target.remove(); 
         create(1);
+        document.getElementById('scorehow').textContent = score;
+        score++
         }
       }
       )
-      
-      
 // 1초마다 timehow의 innerHTML에 '초'를 붙인 값을 입력하는 함수 작성 - 미해결
 let ti = 5;
-let sec = 0;
 let limittime = setInterval(function() {
   ti--;
-  sec = ti%10;
+  document.getElementById('timehow').textContent = ti+'초'
+  if( ti < 0 ) {
+    clearInterval(limittime);
+    document.getElementById('timehow').textContent = '종료!'
+  };
+}, 1000);
 
-  document.getElementById('timehow').textContent = sec+'초'
-  console.log(sec)
-      }, 1000
-      );
+
+// scorehow += scorehow + count
+      
   
     // 반복문을 통하여 litag 생성함수 작성
   </script>
