@@ -140,35 +140,37 @@ create(3);
 let timehow = document.getElementById('timehow').textContent;
 let scorehow = document.getElementById('scorehow').textContent;
 // click이벤트 발생시 event.target을 제거하나 playground 이하 모든 태그가 삭제됨으로 if문으로 playground를 삭제되지 않도록 조건을 설정함
+let score = 0;
+let stop = AbortController();
 playground.addEventListener('click', function() {
   if(event.target !== playground) {
-    if(document.getElementById('timehow').textContent !== '종료!') {
       event.target.remove(); 
       create(1);
       score++;
       document.getElementById('scorehow').textContent = score;
+      console.log(document.getElementById('scorehow').textContent)
     // 삭제가 되지 않는 조건
-    } else {
+    if (document.getElementById('timehow').textContent === '종료') {
+      stop.abort();
     }
+  }  
 }  
-})
+)
   // 1초마다 timehow의 innerHTML에 '초'를 붙인 값을 입력하는 함수 작성 
     function limittime(num) { setInterval(function() {
       num--;
-      if( num <= 0 ) {
+      document.getElementById('timehow').textContent = num +'초';
+      if( num < 1 ) {
         document.getElementById('timehow').textContent = '종료!';
         clearInterval(limittime);
       };
-      document.getElementById('timehow').textContent = num +'초';
     }, 1000);
     }
 let playbutton = document.getElementById('playbutton');
 playbutton.addEventListener('click', function() {
   score = 0;
-  limittime(3);
+  limittime(10);
 });
-  console.log(document.getElementById('scorehow').textContent);
-  console.log(document.getElementById('timehow').textContent);
   </script>
 </body>
 </html>
