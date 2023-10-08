@@ -1,5 +1,10 @@
-function random(top, left, callback) {
-  callback(top,left)
-}
+let time = 12000;
+let sec = '';
 
-let random = Math.floor(Math.random() * 800-1)+1
+
+let limittime = setInterval(function() {
+  time--;
+  sec = time/60
+  document.getElementById('timehow').textContent= sec+'초'
+}, 12000);
+

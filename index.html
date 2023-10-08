@@ -17,6 +17,8 @@
       justify-content: center;
       align-items: center;
       background-color: aliceblue;
+      width: 100vw;
+      height: 100vh;
     }
 
     #playground {
@@ -42,6 +44,9 @@
       height: 70px;
       margin-top: 10px;
       background-color: gray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     #score {
@@ -49,6 +54,9 @@
       height: 70px;
       margin-top: 10px;
       background-color: gray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     #playbutton {
@@ -69,12 +77,12 @@
       <!-- 두번째 ul태그에 감소하는 타이머 작성 -->
       <div id="time">
         <ul>제한시간</ul>
-        <ul></ul>
+        <ul id ='timehow'></ul>
       </div>
       <!-- 두번째 ul태그에 score라는 곳에 넣은 점수 작성 -->
       <div id="score">
         <ul>점수</ul>
-        <ul></ul>
+        <ul id ='scorehow'></ul>
       </div>
       <!-- addeventListner를 통하여 클릭시 3개의 li태그 생성 -->
       <button type="button" value='Play!' id='playbutton'>
@@ -119,8 +127,16 @@
         }
       }
       )
-  
-    console.dir(time)
+      
+      
+// 1초마다 timehow의 innerHTML에 '초'를 붙인 값을 입력하는 함수 작성 - 미해결
+      let limittime = setInterval(function() {
+        let time = 120000;
+        let sec = '';
+        time--;
+        sec = time%60
+        document.getElementById('timehow').innerHTML= sec+'초'
+      }, 1000);
     // 반복문을 통하여 litag 생성함수 작성
   </script>
 </body>
