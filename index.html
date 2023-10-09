@@ -160,10 +160,15 @@ let scorehow = document.getElementById('scorehow')
 // click이벤트 발생시 event.target을 제거하나 playground 이하 모든 태그가 삭제됨으로 if문으로 playground를 삭제되지 않도록 조건을 설정함
 playground.addEventListener('click', function() {
   if(event.target !== playground) {
+    // 종료!버튼이 나오기 전까지 게임 시작
     if(timehow.textContent !== '종료!') {
+      // 이벤트 타겟 제거
       event.target.remove(); 
+      // 1개의 검은 점 생성
       create(1);
+      // 클릭시 스코어는 1씩 증가
       score++;
+      // 스코어 점수판에 스코어 입력
       scorehow.textContent = score;
     // 삭제가 되지 않는 조건
     } else {
@@ -173,24 +178,34 @@ playground.addEventListener('click', function() {
   // setInterval을 콜백함수로 작용하는 함수를 선언하고 매개변수로 num을 넣어 시간을 편하게 바꿔줄 수 있게 세팅
 
     function limittime(num) { 
+      // 문제발생 해결 - setInterval함수를 변수로 선언하구 clearInterval을 해야지 setInterval의 실행문이 중단된다고 중단되는 것은 아니다
       let setting = setInterval(function() {
+      // 초당 1씩 감소
       num--;
+      // 감소된 시간을 입력
       timehow.textContent = num +'초';
+      // 0보다 작거나 같을 때 조건식
       if( num <= 0 ) {
         timehow.textContent = '종료!';
+        // interval함수 종료
         clearInterval(setting);
       };
+      // 1초당 반복하여 texContent에 넣어줌
     }, 1000);
     }
-    // 문제발생 해결 - setInterval함수를 변수로 선언하구 clearInterval을 해야지 setInterval의 실행문이 중단된다고 중단되는 것은 아니다
+// rank점수 최대값 변수 선언
 let rankscore = document.getElementById('rankscore')
+// 점수를 저장할 배열선언
 let scorestorage = [];
+// playbutton 변수 선언
 let playbutton = document.getElementById('playbutton');
+// playbutton클릭시 score =0초기화, 5초로 초 시작, 스코어보드에 배열로 변수입력
 playbutton.addEventListener('click', function() {
   score = 0;
   limittime(5);
   scorestorage[scorestorage.length] = scorehow.textContent;
   console.log(scorestorage)
+  // 배열의 최대값 찾는 메소드
   let maxValue = Math.max.apply(null, scorestorage);
   rankscore.textContent = maxValue;  
 });
