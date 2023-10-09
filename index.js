@@ -1,13 +1,2 @@
-// let time = 12000;
-// let sec = '';
-
-
-// let limittime = setInterval(function() {
-//   time--;
-//   sec = time/60
-//   document.getElementById('timehow').textContent= sec+'초'
-// }, 12000);
-
-
-
-console.log(1000%1000);
+let maxValue = Math.max(5,4,3,2,1,3,5);
+console.log(maxValue);

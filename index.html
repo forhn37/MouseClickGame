@@ -93,11 +93,13 @@
       <!-- 두번째 ul태그에 감소하는 타이머 작성 -->
       <div id="time">
         <ul>제한시간</ul>
+        <!-- '정적으로 기본세팅하고 싶으면 limittime()의 매개변수를 textContent로 입력' -->
         <ul id ='timehow'></ul>
       </div>
       <!-- 두번째 ul태그에 score라는 곳에 넣은 점수 작성 -->
       <div id="score">
         <ul>점수</ul>
+        <!-- '정적으로 기본세팅하고 싶으면 limittime()의 매개변수를 textContent로 입력' -->
         <ul id ="scorehow"></ul>
       </div>
       <!-- addeventListner를 통하여 클릭시 3개의 li태그 생성 -->
@@ -152,7 +154,8 @@ playground.addEventListener('click', function() {
     }
 }  
 })
-  // 1초마다 timehow의 innerHTML에 '초'를 붙인 값을 입력하는 함수 작성 
+  // setInterval을 콜백함수로 작용하는 함수를 선언하고 매개변수로 num을 넣어 시간을 편하게 바꿔줄 수 있게 세팅
+
     function limittime(num) { 
       let setting = setInterval(function() {
       num--;
@@ -165,13 +168,18 @@ playground.addEventListener('click', function() {
     }, 1000);
     }
     // 문제발생 해결 - setInterval함수를 변수로 선언하구 clearInterval을 해야지 setInterval의 실행문이 중단된다고 중단되는 것은 아니다
+let scorestorage = [];
 let playbutton = document.getElementById('playbutton');
 playbutton.addEventListener('click', function() {
   score = 0;
-  limittime(3);
+  limittime(5);
+  scorestorage[scorestorage.length] = document.getElementById('scorehow').textContent;
+  console.log(scorestorage)
+  let maxValue = Math.max.apply(null, scorestorage);
+  console.log(maxValue);
 });
-  console.log(document.getElementById('scorehow').textContent);
-  console.log(document.getElementById('timehow').textContent);
+  // console.log(document.getElementById('scorehow').textContent);
+  // console.log(document.getElementById('timehow').textContent);
   </script>
 </body>
 </html>
