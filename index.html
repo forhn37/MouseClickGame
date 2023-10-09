@@ -153,16 +153,18 @@ playground.addEventListener('click', function() {
 }  
 })
   // 1초마다 timehow의 innerHTML에 '초'를 붙인 값을 입력하는 함수 작성 
-    function limittime(num) { setInterval(function() {
+    function limittime(num) { 
+      let setting = setInterval(function() {
       num--;
       document.getElementById('timehow').textContent = num +'초';
       if( num <= 0 ) {
         document.getElementById('timehow').textContent = '종료!';
         console.log(document.getElementById('timehow').textContent);
-        clearInterval(limittime);
+        clearInterval(setting);
       };
     }, 1000);
     }
+    // 문제발생 해결 - setInterval함수를 변수로 선언하구 clearInterval을 해야지 setInterval의 실행문이 중단된다고 중단되는 것은 아니다
 let playbutton = document.getElementById('playbutton');
 playbutton.addEventListener('click', function() {
   score = 0;
