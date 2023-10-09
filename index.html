@@ -81,6 +81,18 @@
       color: whitesmoke;
       font-size: 50px;
     }
+    #rank {
+      color: red;
+      font-size: 20px;
+      width: 300px;
+      text-align: center;
+      display: flex;
+    }
+    #rank > ul {
+      color: red;
+      font-size: 20px;
+      width: 150px;
+    }
 
     /* 기초 css 작성 */
   </style>
@@ -90,6 +102,10 @@
   <div id="root">
     <div id="playground"></div>
     <div id="consolebox">
+      <div id = "rank">
+        <ul>Rank 1ST Score</ul>
+        <ul id = "rankscore"></ul>
+      </div>
       <!-- 두번째 ul태그에 감소하는 타이머 작성 -->
       <div id="time">
         <ul>제한시간</ul>
@@ -139,16 +155,16 @@
 create(3);
 
 // 함수 클릭시 score++(1씩증가)하고 score가 scorehow.textcontent에 들어감
-let timehow = document.getElementById('timehow').textContent;
-let scorehow = document.getElementById('scorehow').textContent;
+let timehow = document.getElementById('timehow')
+let scorehow = document.getElementById('scorehow')
 // click이벤트 발생시 event.target을 제거하나 playground 이하 모든 태그가 삭제됨으로 if문으로 playground를 삭제되지 않도록 조건을 설정함
 playground.addEventListener('click', function() {
   if(event.target !== playground) {
-    if(document.getElementById('timehow').textContent !== '종료!') {
+    if(timehow.textContent !== '종료!') {
       event.target.remove(); 
       create(1);
       score++;
-      document.getElementById('scorehow').textContent = score;
+      scorehow.textContent = score;
     // 삭제가 되지 않는 조건
     } else {
     }
@@ -159,24 +175,24 @@ playground.addEventListener('click', function() {
     function limittime(num) { 
       let setting = setInterval(function() {
       num--;
-      document.getElementById('timehow').textContent = num +'초';
+      timehow.textContent = num +'초';
       if( num <= 0 ) {
-        document.getElementById('timehow').textContent = '종료!';
-        console.log(document.getElementById('timehow').textContent);
+        timehow.textContent = '종료!';
         clearInterval(setting);
       };
     }, 1000);
     }
     // 문제발생 해결 - setInterval함수를 변수로 선언하구 clearInterval을 해야지 setInterval의 실행문이 중단된다고 중단되는 것은 아니다
+let rankscore = document.getElementById('rankscore')
 let scorestorage = [];
 let playbutton = document.getElementById('playbutton');
 playbutton.addEventListener('click', function() {
   score = 0;
   limittime(5);
-  scorestorage[scorestorage.length] = document.getElementById('scorehow').textContent;
+  scorestorage[scorestorage.length] = scorehow.textContent;
   console.log(scorestorage)
   let maxValue = Math.max.apply(null, scorestorage);
-  console.log(maxValue);
+  rankscore.textContent = maxValue;  
 });
   // console.log(document.getElementById('scorehow').textContent);
   // console.log(document.getElementById('timehow').textContent);
